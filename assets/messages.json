@@ -3824,21 +3824,6 @@
     "nl": "Off",
     "sv": "Off"
   },
-  "powerActionSuspend": {
-    "en": "Suspend",
-    "de": "Suspend",
-    "es": "Suspend",
-    "zh": "Suspend",
-    "zh-tw": "Suspend",
-    "pt": "Suspend",
-    "it": "Suspend",
-    "ru": "Suspend",
-    "pl": "Suspend",
-    "fr": "Veille",
-    "vi": "Suspend",
-    "nl": "Suspend",
-    "sv": "Suspend"
-  },
   "powerActionPowerOff": {
     "en": "Power off",
     "de": "Power off",

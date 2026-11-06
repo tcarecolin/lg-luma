@@ -2,16 +2,18 @@ use crate::system::{self, System};
 use crate::Result;
 use serde_json::{json, Value};
 
-/// Root-only power actions for the home power button. Suspend is the same
-/// standby the remote's power key triggers with Quick Start+ on; shutdown is a
-/// real poweroff, like the remote's power key with Quick Start+ off. The exact
-/// tvpower methods/payloads must be confirmed on the device.
+/// Root-only power off for the home power button. /sbin/poweroff is the
+/// command validated on the device (a real shutdown with a clean boot);
+/// the tvpower luna methods were guesses that could not be confirmed.
+/// Standby stays with the remote's power key, which Quick Start+ turns
+/// into the suspend the wake handling covers.
 pub fn dispatch(system: &impl System, action: &str) -> Result<Value> {
     system::root(system)?;
-    let (method, payload) = match action {
-        "suspend" => ("turnOffScreen", json!({})),
-        "shutdown" => ("shutdown", json!({"standbyOff": true})),
-        other => return Err(format!("Unknown power action: {other}")),
-    };
-    system::luna(system, "com.webos.service.tvpower", method, &payload)
+    match action {
+        "shutdown" => {
+            system::command(system, "/sbin/poweroff", &[])?;
+            Ok(json!({"returnValue": true}))
+        }
+        other => Err(format!("Unknown power action: {other}")),
+    }
 }

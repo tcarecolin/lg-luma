@@ -261,10 +261,9 @@ impl Platform {
                         Ok(desktop_inventory.inputs.clone())
                     }),
                     Request::Power(action) => {
-                        // The root helper performs the actual tvpower call; the app
-                        // itself has no ACG for power management.
+                        // The root helper runs /sbin/poweroff; the app itself has
+                        // no ACG for power management.
                         let arg = match action {
-                            crate::model::PowerAction::Suspend => "suspend",
                             crate::model::PowerAction::PowerOff => "shutdown",
                             crate::model::PowerAction::Off => "",
                         };

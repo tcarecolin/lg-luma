@@ -218,20 +218,14 @@ impl DateFormat {
 pub enum PowerAction {
     #[default]
     Off,
-    Suspend,
     PowerOff,
 }
 
 impl PowerAction {
-    pub const ALL: [PowerAction; 3] = [
-        PowerAction::Off,
-        PowerAction::Suspend,
-        PowerAction::PowerOff,
-    ];
+    pub const ALL: [PowerAction; 2] = [PowerAction::Off, PowerAction::PowerOff];
     pub fn label_key(&self) -> &'static str {
         match self {
             PowerAction::Off => "powerActionOff",
-            PowerAction::Suspend => "powerActionSuspend",
             PowerAction::PowerOff => "powerActionPowerOff",
         }
     }

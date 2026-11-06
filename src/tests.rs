@@ -2415,7 +2415,7 @@ fn power_button_widget_configures_home_power_action() {
     state.activate();
     assert_eq!(state.subpage, Some(Subpage::PowerButton));
     assert_eq!(state.focus, Target::Choice(0));
-    state.focus = Target::Choice(2);
+    state.focus = Target::Choice(1);
     assert_eq!(state.activate(), vec![Effect::Save]);
     assert_eq!(
         state.preferences.home_power_button,
@@ -2424,8 +2424,6 @@ fn power_button_widget_configures_home_power_action() {
     assert!(state.subpage.is_none());
     state.focus = Target::HomePower;
     assert_eq!(state.activate(), vec![Effect::PowerOff]);
-    state.preferences.home_power_button = crate::model::PowerAction::Suspend;
-    assert_eq!(state.activate(), vec![Effect::Suspend]);
     state.preferences.home_power_button = crate::model::PowerAction::Off;
     assert_eq!(state.activate(), Vec::<Effect>::new());
 }

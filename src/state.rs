@@ -200,7 +200,6 @@ pub enum Effect {
     Quit,
     Weather(weather::Command),
     UpdateDownload(String),
-    Suspend,
     PowerOff,
 }
 
@@ -2176,7 +2175,6 @@ impl State {
             }
             Target::HomePower => {
                 return match self.preferences.home_power_button {
-                    crate::model::PowerAction::Suspend => vec![Effect::Suspend],
                     crate::model::PowerAction::PowerOff => vec![Effect::PowerOff],
                     crate::model::PowerAction::Off => vec![],
                 };
@@ -2324,7 +2322,7 @@ impl State {
                     }
                     Some(Subpage::PowerButton) => {
                         self.preferences.home_power_button =
-                            crate::model::PowerAction::ALL[index.min(2)];
+                            crate::model::PowerAction::ALL[index.min(1)];
                     }
                     Some(
                         Subpage::WeatherLocation

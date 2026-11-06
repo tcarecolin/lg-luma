@@ -348,7 +348,6 @@ fn effects(
             Effect::FireWebhook(tile) => webhook.send(tile),
             Effect::UpdateDownload(release) => updates.request(update::Request::Download(release)),
             Effect::Quit => return false,
-            Effect::Suspend => platform.send(Request::Power(crate::model::PowerAction::Suspend)),
             Effect::PowerOff => platform.send(Request::Power(crate::model::PowerAction::PowerOff)),
             Effect::Uninstall(id) => platform.send(Request::Uninstall(id)),
             Effect::DeleteWallpaper(id) => {
