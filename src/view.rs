@@ -756,8 +756,13 @@ fn header(
     // gear shifts left only while the power button is shown.
     let power_shown = state.preferences.home_power_button != crate::model::PowerAction::Off;
     let corner_x = 1836. - button_size;
+    let gear_x = if power_shown {
+        corner_x - 72.
+    } else {
+        corner_x
+    };
     let rect = Rect::new(
-        if power_shown { corner_x - 72. } else { corner_x },
+        gear_x,
         nav.y + (nav.h - button_size) / 2.,
         button_size,
         button_size,
