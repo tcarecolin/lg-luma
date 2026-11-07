@@ -3838,35 +3838,5 @@
     "vi": "Đang tắt…",
     "nl": "Uitschakelen…",
     "sv": "Stänger av…"
-  },
-  "powerActionOff": {
-    "en": "Off",
-    "de": "Off",
-    "es": "Off",
-    "zh": "Off",
-    "zh-tw": "Off",
-    "pt": "Off",
-    "it": "Off",
-    "ru": "Off",
-    "pl": "Off",
-    "fr": "Désactivé",
-    "vi": "Off",
-    "nl": "Off",
-    "sv": "Off"
-  },
-  "powerActionPowerOff": {
-    "en": "Power off",
-    "de": "Power off",
-    "es": "Power off",
-    "zh": "Power off",
-    "zh-tw": "Power off",
-    "pt": "Power off",
-    "it": "Power off",
-    "ru": "Power off",
-    "pl": "Power off",
-    "fr": "Arrêt complet",
-    "vi": "Power off",
-    "nl": "Power off",
-    "sv": "Power off"
   }
 }
