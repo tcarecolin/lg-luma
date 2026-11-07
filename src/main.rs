@@ -348,7 +348,10 @@ fn effects(
             Effect::FireWebhook(tile) => webhook.send(tile),
             Effect::UpdateDownload(release) => updates.request(update::Request::Download(release)),
             Effect::Quit => return false,
-            Effect::PowerOff => platform.send(Request::Power(crate::model::PowerAction::PowerOff)),
+            Effect::PowerOff => {
+                state.notify(state.preferences.language.t("poweringOff"));
+                platform.send(Request::Power(crate::model::PowerAction::PowerOff));
+            }
             Effect::Uninstall(id) => platform.send(Request::Uninstall(id)),
             Effect::DeleteWallpaper(id) => {
                 wallpapers.delete(id, state.preferences.background.clone())

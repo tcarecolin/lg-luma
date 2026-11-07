@@ -3824,6 +3824,21 @@
     "nl": "Uitschakelen mislukt",
     "sv": "Avstängning misslyckades"
   },
+  "poweringOff": {
+    "en": "Powering off…",
+    "de": "Wird ausgeschaltet…",
+    "es": "Apagando…",
+    "zh": "正在关机…",
+    "zh-tw": "正在關機…",
+    "pt": "A desligar…",
+    "it": "Spegnimento…",
+    "ru": "Выключаем…",
+    "pl": "Wyłączanie…",
+    "fr": "Extinction…",
+    "vi": "Đang tắt…",
+    "nl": "Uitschakelen…",
+    "sv": "Stänger av…"
+  },
   "powerActionOff": {
     "en": "Off",
     "de": "Off",
