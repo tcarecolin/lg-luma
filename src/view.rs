@@ -752,8 +752,12 @@ fn header(
         out.control(Target::Nav(index), rect, false);
     }
     let button_size = 60.;
+    // The optional power button takes the corner spot; the TV-settings
+    // gear shifts left only while the power button is shown.
+    let power_shown = state.preferences.home_power_button != crate::model::PowerAction::Off;
+    let corner_x = 1836. - button_size;
     let rect = Rect::new(
-        1836. - button_size,
+        if power_shown { corner_x - 72. } else { corner_x },
         nav.y + (nav.h - button_size) / 2.,
         button_size,
         button_size,
@@ -776,9 +780,9 @@ fn header(
         },
     );
     out.control(Target::TvSettings, rect, false);
-    // Optional home power button, shown wherever the TV-settings gear shows. Hidden when Off.
-    if state.preferences.home_power_button != crate::model::PowerAction::Off {
-        let power_rect = Rect::new(rect.x - 72., rect.y, button_size, button_size);
+    // Optional power button in the corner, shown on every page. Hidden when Off.
+    if power_shown {
+        let power_rect = Rect::new(corner_x, rect.y, button_size, button_size);
         let power_focused = state.focus == Target::HomePower;
         out.pill(power_rect, power_focused, false);
         out.icon(
