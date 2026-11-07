@@ -1,6 +1,6 @@
-use crate::system::{self, System};
 use crate::Result;
-use serde_json::{json, Value};
+use crate::system::{self, System};
+use serde_json::{Value, json};
 
 /// Root-only power off for the home power button. /sbin/poweroff is the
 /// command validated on the device (a real shutdown with a clean boot);
