@@ -1163,6 +1163,7 @@ fn run() -> Result<(), String> {
                 Response::Powered(result) => {
                     if let Err(error) = result {
                         eprintln!("power action failed: {error}");
+                        state.notify(state.preferences.language.t("powerActionFailed"));
                     }
                 }
                 Response::Recent {

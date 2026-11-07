@@ -776,10 +776,8 @@ fn header(
         },
     );
     out.control(Target::TvSettings, rect, false);
-    // Optional home power button, next to the TV-settings gear. Hidden when Off.
-    if state.page == Page::Home
-        && state.preferences.home_power_button != crate::model::PowerAction::Off
-    {
+    // Optional home power button, shown wherever the TV-settings gear shows. Hidden when Off.
+    if state.preferences.home_power_button != crate::model::PowerAction::Off {
         let power_rect = Rect::new(rect.x - 72., rect.y, button_size, button_size);
         let power_focused = state.focus == Target::HomePower;
         out.pill(power_rect, power_focused, false);

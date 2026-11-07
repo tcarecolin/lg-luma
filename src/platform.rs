@@ -268,29 +268,30 @@ impl Platform {
                             crate::model::PowerAction::Off => "",
                         };
                         let result = if webos && !arg.is_empty() {
-                            let command = helper_command("power", &[arg.to_string()]);
-                            #[cfg(all(
-                                feature = "webos",
-                                target_os = "linux",
-                                target_arch = "arm"
-                            ))]
-                            let call = crate::luna::call_with_timeout(
-                                "luna://org.webosbrew.hbchannel.service/exec",
-                                &json!({"command": command}),
-                                std::time::Duration::from_secs(20),
-                            );
-                            #[cfg(not(all(
-                                feature = "webos",
-                                target_os = "linux",
-                                target_arch = "arm"
-                            )))]
-                            let call = raw_call(
-                                "luna://org.webosbrew.hbchannel.service/exec",
-                                &json!({"command": command}),
-                            );
-                            call.and_then(checked_response)
-                                .and_then(|envelope| command_reply(&envelope))
-                                .map(|_| ())
+                            helper_command("power", &[arg.to_string()]).and_then(|command| {
+                                #[cfg(all(
+                                    feature = "webos",
+                                    target_os = "linux",
+                                    target_arch = "arm"
+                                ))]
+                                let call = crate::luna::call_with_timeout(
+                                    "luna://org.webosbrew.hbchannel.service/exec",
+                                    &json!({"command": command}),
+                                    std::time::Duration::from_secs(60),
+                                );
+                                #[cfg(not(all(
+                                    feature = "webos",
+                                    target_os = "linux",
+                                    target_arch = "arm"
+                                )))]
+                                let call = raw_call(
+                                    "luna://org.webosbrew.hbchannel.service/exec",
+                                    &json!({"command": command}),
+                                );
+                                call.and_then(checked_response)
+                                    .and_then(|envelope| command_reply(&envelope))
+                                    .map(|_| ())
+                            })
                         } else {
                             Err("Power actions require the TV build".into())
                         };

@@ -3809,6 +3809,21 @@
     "nl": "Power button",
     "sv": "Power button"
   },
+  "powerActionFailed": {
+    "en": "Power off failed",
+    "de": "Ausschalten fehlgeschlagen",
+    "es": "Error al apagar",
+    "zh": "关机失败",
+    "zh-tw": "關機失敗",
+    "pt": "Falha ao desligar",
+    "it": "Spegnimento non riuscito",
+    "ru": "Не удалось выключить",
+    "pl": "Nie udało się wyłączyć",
+    "fr": "Échec de l'extinction",
+    "vi": "Tắt máy không thành công",
+    "nl": "Uitschakelen mislukt",
+    "sv": "Avstängning misslyckades"
+  },
   "powerActionOff": {
     "en": "Off",
     "de": "Off",
